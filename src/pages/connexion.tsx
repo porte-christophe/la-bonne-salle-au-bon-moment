@@ -1,8 +1,17 @@
 //Imports
+import { useState } from 'react';
 import './connexion.css';
 
 //Component : connexion page
 function connexion() {
+    // Logic 
+    // const emailInput = document.getElementById('email') as HTMLInputElement;
+    // const passwordInput= document.getElementById('password') as HTMLInputElement;
+
+    const [emailInput, setEmailInput] = useState<string>("");
+    const [passwordInput, setPasswordInput] = useState<string>("");
+
+    // Component render
     return (
         <>
             <div>
@@ -11,13 +20,22 @@ function connexion() {
                     <form action="">
                         <div>
                             <label>Identifiant</label>
-                            <input type="text"/>
+                            <input
+                                type="text"
+                                value={emailInput}
+                                onChange={(event) => setEmailInput(event.target.value)}
+                            />
+
                         </div>
                         <div>
-                            <label htmlFor="">Mot de passe</label>
-                            <input type="text"/>
+                            <label>Mot de passe</label>
+                            <input
+                                type="password"
+                                value={passwordInput}
+                                onChange={(event) => setPasswordInput(event.target.value)}
+                            />
                         </div>
-                        <button type="submit">Se connecter</button>
+                        <button type="button" onClick={() => {console.log(emailInput, passwordInput)}}>Se connecter</button>
                     </form>
                 </div>
             </div>
