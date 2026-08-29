@@ -1,6 +1,7 @@
 //Imports
 import { useState } from 'react';
 import './connexion.css';
+import { checkEmailMdp } from '../services/connexion.service';
 
 //Component : connexion page
 function connexion() {
@@ -10,6 +11,13 @@ function connexion() {
 
     const [emailInput, setEmailInput] = useState<string>("");
     const [passwordInput, setPasswordInput] = useState<string>("");
+    const [message, setMessage] = useState<string>("");
+
+    async function connexionClick() {
+        const isValid = await checkEmailMdp(emailInput, passwordInput);
+        setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect");
+        console.log(isValid);
+    }
 
     // Component render
     return (
@@ -35,8 +43,9 @@ function connexion() {
                                 onChange={(event) => setPasswordInput(event.target.value)}
                             />
                         </div>
-                        <button type="button" onClick={() => {console.log(emailInput, passwordInput)}}>Se connecter</button>
+                        <button type="button" onClick={connexionClick}>Se connecter</button>
                     </form>
+                    {message && <p>{message}</p>}
                 </div>
             </div>
         </>
