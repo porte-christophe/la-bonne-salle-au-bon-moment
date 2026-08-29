@@ -11,12 +11,12 @@ function connexion() {
 
     const [emailInput, setEmailInput] = useState<string>("");
     const [passwordInput, setPasswordInput] = useState<string>("");
-    const [message, setMessage] = useState<string>("");
+    const [message, setMessage] = useState<string>(""); // Le message qui s'affichera au clic du bouton, juste là pour le test
 
-    async function connexionClick() {
+    async function connexionClick() { // La fonction du clic de co, qui remplace la fonction anonyme du test d'avant
         const isValid = await checkEmailMdp(emailInput, passwordInput);
-        setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect");
-        console.log(isValid);
+        setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect"); // Le message en dessous du formulaire, après clic
+        console.log(isValid); // Juste pour le test, faudra penser à le virer celui-là
     }
 
     // Component render
@@ -43,9 +43,9 @@ function connexion() {
                                 onChange={(event) => setPasswordInput(event.target.value)}
                             />
                         </div>
-                        <button type="button" onClick={connexionClick}>Se connecter</button>
+                        <button type="button" onClick={connexionClick}>Se connecter</button> {/* Appel de la nouvelle fonction clic */}
                     </form>
-                    {message && <p>{message}</p>}
+                    {message && <p>{message}</p>} {/* Le fameux message de test */}
                 </div>
             </div>
         </>
