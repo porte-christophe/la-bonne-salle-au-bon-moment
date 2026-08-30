@@ -1,30 +1,48 @@
 //Imports
 import { useState } from 'react';
 import './connexion.css';
-// import * as z from "zod";
 // React hook form
 import { useForm } from 'react-hook-form';
+// zod
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+
 
 //Component : connexion page
-function connexion() {
+function Connexion() {
     // --------- Logic ---------
     // Variables
     const [emailInput, setEmailInput] = useState<string>("");
     const [passwordInput, setPasswordInput] = useState<string>("");
 
+    const loginConditions = z.object({
+        email: z
+        .string()
+        .min(1, "L'email est obligatoire")
+        .email("L'email est invalide"),
+        password: z
+        .string()
+        .min(1, "Le mot de passe est obligatoire")
+        .min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+    });
+
     const {
         register, // Pour enregistrer et récupérer les champs d’un formulaire par nom
         handleSubmit, // Gérer la soumission du formulaire
         formState: { errors }, // Récupère les erreurs de validation
-    } = useForm();
+    } = useForm({resolver: zodResolver(loginConditions),});
 
+
+
+
+    // Fonctions
     async function onSubmit() {
-        console.log(emailInput, passwordInput)
+        setEmailInput(event.target[0].value);
+        setPasswordInput(event.target[1].value);
+        console.log(emailInput, passwordInput);
         // appel à l'API ici
     }
 
-
-    
 
     // Component render
     return (
@@ -37,9 +55,10 @@ function connexion() {
                             <label>Identifiant</label>
                             <input
                                 type="email"
-                                value={emailInput}
-                                {...register("email",{ required: "L'email est obligatoire", })}
+                                defaultValue={emailInput}
+                                {...register("email")}
                                 onChange={(event) => setEmailInput(event.target.value)}
+                                
                             />
                             {errors.email && (<p>{errors.email.message}</p>)}
                         </div>
@@ -47,9 +66,10 @@ function connexion() {
                             <label>Mot de passe</label>
                             <input
                                 type="password"
-                                value={passwordInput}
-                                {...register("password",{ required: "Le mot de passe est obligatoire", })}
+                                defaultValue={passwordInput}
+                                {...register("password")}
                                 onChange={(event) => setPasswordInput(event.target.value)}
+                                
                             />
                             {errors.password && (<p>{errors.password.message}</p>)}
                         </div>
@@ -60,4 +80,4 @@ function connexion() {
         </>
     )
 }
-export default connexion;
+export default Connexion;
