@@ -1,14 +1,14 @@
 // Imports
-import './App.css';
-import CreerSalle from './pages/testCreerSalle';
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./AppRoutes";
 
 // Compoment
 function App() {
 
   return (
-    <>
-      <CreerSalle />
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 export default App;

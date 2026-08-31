@@ -6,21 +6,25 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod'; // AJOUT : pont entre Zod et RHF
 import { checkEmailMdp } from '../services/connexion.service';
 
-const loginSchema = z.object({
-    email: z
-        .string()
-        .min(1, "L'email est obligatoire")
-        .email("L'email est invalide"),
-    password: z
-        .string()
-        .min(1, "Le mot de passe est obligatoire")
-        .min(8, "Le mot de passe doit contenir au moins 8 caractères"),
-});
 
-type LoginFormData = z.infer<typeof loginSchema>;
 
 //Component : connexion page
 function Connexion() {
+
+    const loginSchema = z.object({
+        email: z
+            .string()
+            .min(1, "L'email est obligatoire")
+            .email("L'email est invalide"),
+        password: z
+            .string()
+            .min(1, "Le mot de passe est obligatoire")
+            .min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+    });
+
+    type LoginFormData = z.infer<typeof loginSchema>;
+
+
 
     const [message, setMessage] = useState<string>(""); // CONSERVÉ : message de résultat de connexion, affiché après clic
 
@@ -35,7 +39,6 @@ function Connexion() {
     async function onSubmit(data: LoginFormData) {
         const isValid = await checkEmailMdp(data.email, data.password); // CONSERVÉ : ton appel au service + json-server
         setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect"); // CONSERVÉ
-        console.log(isValid); // CONSERVÉ (à retirer avant rendu final, comme noté dans ton commentaire d'origine)
     }
 
     // Component render
