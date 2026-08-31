@@ -1,16 +1,30 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "antonin@tiktok.com",
       "password": "brainrot",
       "role": "formateur"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "gerard@yahoo.fr",
       "password": "motdepasse",
       "role": "admin"
     }
-  ]
+  ],
+  "salles": [
+    {
+      "label": "223",
+      "capacity": 4,
+      "site": "fdfdbfgd",
+      "building": "gyh",
+      "floor": 4,
+      "material": [
+        "dfbgfdgd"
+      ],
+      "id": "IG5XCiyX4D8"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
