@@ -1,17 +1,29 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "antonin@tiktok.com",
       "password": "brainrot",
       "role": "formateur"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "gerard@yahoo.fr",
       "password": "motdepasse",
       "role": "admin"
     }
   ],
-  "salles": []
+  "salles": [
+    {
+      "label": "2dtryuy",
+      "capacity": 9,
+      "site": "cézeaux",
+      "building": "7",
+      "floor": 8,
+      "material": [
+        "diams"
+      ],
+      "id": "6vhWJZ0IElw"
+    }
+  ]
 }

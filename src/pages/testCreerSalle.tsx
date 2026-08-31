@@ -1,3 +1,4 @@
+// src/pages/creerSalle.tsx
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -20,41 +21,44 @@ function CreerSalle() {
     });
 
     async function onSubmit(data: CreerSalleFormData) {
-    const material = data.material
-        ? data.material.split(',').map((m) => m.trim())
-        : [];
+        const material = data.material
+            ? data.material.split(',').map((m) => m.trim())
+            : [];
 
-    await createSalle({ ...data, material });
-    reset();
-}
+        await createSalle({ ...data, material });
+        reset();
+    }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Label</label>
-            <input type="text" {...register("label")} />
-            {errors.label && <p>{errors.label.message}</p>}
+        <>
+            <h2>Ajouter une nouvelle salle</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <label>Nom</label>
+                <input type="text" {...register("label")} />
+                {errors.label && <p>{errors.label.message}</p>}
 
-            <label>Capacité</label>
-            <input type="number" {...register("capacity", { valueAsNumber: true })} />
-            {errors.capacity && <p>{errors.capacity.message}</p>}
+                <label>Capacité d'accueil</label>
+                <input type="number" {...register("capacity", { valueAsNumber: true })} />
+                {errors.capacity && <p>{errors.capacity.message}</p>}
 
-            <label>Site</label>
-            <input type="text" {...register("site")} />
-            {errors.site && <p>{errors.site.message}</p>}
+                <label>Matériel disponible</label>
+                <input type="text" {...register("material")} />
 
-            <label>Building</label>
-            <input type="text" {...register("building")} />
-            {errors.building && <p>{errors.building.message}</p>}
+                <label>Site</label>
+                <input type="text" {...register("site")} />
+                {errors.site && <p>{errors.site.message}</p>}
 
-            <label>Étage</label>
-            <input type="number" {...register("floor", { valueAsNumber: true })} />
-            {errors.floor && <p>{errors.floor.message}</p>}
+                <label>Bâtiment</label>
+                <input type="text" {...register("building")} />
+                {errors.building && <p>{errors.building.message}</p>}
 
-            <label>Matériel</label>
-            <input type="text" {...register("material")} />
+                <label>Etage</label>
+                <input type="number" {...register("floor", { valueAsNumber: true })} />
+                {errors.floor && <p>{errors.floor.message}</p>}
 
-            <button type="submit">Créer la salle</button>
-        </form>
+                <button type="submit">Valider</button>
+            </form>
+        </>
     );
 }
 
