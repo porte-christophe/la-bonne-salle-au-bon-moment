@@ -1,14 +1,14 @@
 // Imports
-import './App.css';
-import Connexion from './pages/connexion';
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./AppRoutes";
 
 // Compoment
 function App() {
 
   return (
-    <>
-      <Connexion />
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 export default App;
