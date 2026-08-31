@@ -1,10 +1,14 @@
 import './button.css';
 
+interface Button{
+    description: string;
+}
 
-function Button(){
+
+function Button({description}: Button){
 return(
     <>
-    <button>Se connecter</button>
+    <button>{description}</button>
     </>
 )
 

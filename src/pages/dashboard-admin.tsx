@@ -9,7 +9,7 @@ function DashboardAdmin(){
       <>  
 
       <header>
-        <div><button>Se deconnecter</button></div>
+        <div><Button description='se deconnecter'/></div>
       </header>
       <main>
         <div className='grid'>
@@ -36,10 +36,10 @@ function DashboardAdmin(){
       </main>
       <footer>
         <div>
-          <button>Ajouter une salle</button>
-          <button>Ajouter un formateur</button>
-          <button>Ajouter une reservation</button>
-          <button>Supprimer une reservation</button>
+          <Button description='ajouter une salle'/>
+          <Button description='ajouter un formateur'/>
+          <Button description='ajouter une reservation'/>
+          <Button description='supprimer une reservation'/>
           </div>
       </footer>
       </>
