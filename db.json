@@ -36,6 +36,7 @@
   "salles": [
     {
       "label": "223",
+      "nom" : "Salle informatique",
       "capacity": 4,
       "site": "fdfdbfgd",
       "building": "gyh",
