@@ -29,7 +29,7 @@ const utilisateurSchema = z.object({
 // Type généré automatiquement par Zod
 type UserForm = z.infer<typeof utilisateurSchema>;
 
-function Creerutilisateur() {
+function CreateUserForm() {
   const {
     register,
     handleSubmit,
@@ -166,4 +166,4 @@ function Creerutilisateur() {
   );
 }
 
-export default Creerutilisateur;
+export default CreateUserForm;
