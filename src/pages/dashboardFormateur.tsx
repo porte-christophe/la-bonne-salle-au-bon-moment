@@ -1,1 +1,7 @@
-<p>dashboard Formateur</p>
+import './dashboardFormateur.css';
+
+//--------- Component ---------
+function DashboardFormateur() {
+}
+
+export default DashboardFormateur;
