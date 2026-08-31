@@ -4,6 +4,11 @@
       "id": 1,
       "email": "antonin@tiktok.com",
       "password": "brainrot"
+    },
+    {
+      "id": 2,
+      "email": "gerard@yahoo.fr",
+      "password": "motdepasse"
     }
   ]
 }
