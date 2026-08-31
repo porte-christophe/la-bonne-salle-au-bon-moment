@@ -23,5 +23,18 @@
       "id": "yzyRQOm_Q1g"
     }
   ],
+  "salles": [
+    {
+      "label": "223",
+      "capacity": 4,
+      "site": "fdfdbfgd",
+      "building": "gyh",
+      "floor": 4,
+      "material": [
+        "dfbgfdgd"
+      ],
+      "id": "IG5XCiyX4D8"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

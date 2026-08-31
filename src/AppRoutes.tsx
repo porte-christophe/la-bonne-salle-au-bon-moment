@@ -4,6 +4,7 @@ import Connexion from "./pages/connexion";
 import DashboardAdmin from "./pages/dashboard-admin";
 import DashboardFormateur from "./pages/dashboard-formateur";
 import CreateUserForm from "./pages/createUser";
+import CreerSalle from "./pages/creerSalle";
 
 //Composant
 function AppRoutes() {
@@ -13,6 +14,7 @@ function AppRoutes() {
 			<Route path="/dashboardAdmin" element={<DashboardAdmin/>} />
 			<Route path="/dashboardFormateur" element={<DashboardFormateur/>} />
 			<Route path="/createUserForm" element={<CreateUserForm/>} />
+			<Route path="/creerSalle" element={<CreerSalle/>} />
 		</Routes>
 	);
 }
