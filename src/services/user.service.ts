@@ -1,6 +1,6 @@
 // src/services/salle.service.ts
 export async function createUser(utilisateur: object) {
-  const response = await fetch('http://localhost:3001/utilisateurs', {
+  const response = await fetch('http://localhost:3001/users', {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(utilisateur),
@@ -8,3 +8,5 @@ export async function createUser(utilisateur: object) {
 
   return response.json();
 }
+
+
