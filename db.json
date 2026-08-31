@@ -13,34 +13,6 @@
       "role": "admin"
     },
     {
-      "users": {
-        "typeuser": "Admin",
-        "nom": "Mamma",
-        "prenom": "dkskdmksqmk",
-        "email": "mamadou@gmail.com",
-        "password": "rouguiaiiia"
-      },
-      "id": "yzyRQOm_Q1g"
-    },
-    {
-      "users": {
-        "typeuser": "Admin",
-        "nom": "ramana",
-        "prenom": "mamadou",
-        "email": "mamadou@gmail.com",
-        "password": "lkzjfnz"
-      },
-      "id": "eccaH49lSRA"
-    },
-    {
-      "typeuser": "Admin",
-      "nom": "Albinet",
-      "prenom": "Gabriel",
-      "email": "gabriel.albinet.pro@gmail.com",
-      "password": "testmotdepasse",
-      "id": "QZiJpFV-fws"
-    },
-    {
       "role": "Admin",
       "nom": "Machin",
       "prenom": "Truc",
