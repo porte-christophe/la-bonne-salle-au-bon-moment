@@ -2,8 +2,15 @@
   "users": [
     {
       "id": 1,
-      "email": "antonin",
-      "password": "brainrot"
+      "email": "antonin@tiktok.com",
+      "password": "brainrot",
+      "role": "formateur"
+    },
+    {
+      "id": 2,
+      "email": "gerard@yahoo.fr",
+      "password": "motdepasse",
+      "role": "admin"
     }
   ]
 }
