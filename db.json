@@ -31,6 +31,22 @@
         "password": "lkzjfnz"
       },
       "id": "eccaH49lSRA"
+    },
+    {
+      "typeuser": "Admin",
+      "nom": "Albinet",
+      "prenom": "Gabriel",
+      "email": "gabriel.albinet.pro@gmail.com",
+      "password": "testmotdepasse",
+      "id": "QZiJpFV-fws"
+    },
+    {
+      "role": "Admin",
+      "nom": "Machin",
+      "prenom": "Truc",
+      "email": "gabriel.albinet.pro@gmail.com",
+      "password": "TestMdpTest",
+      "id": "WfGDaVOqGKg"
     }
   ],
   "salles": [
