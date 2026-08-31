@@ -11,6 +11,16 @@
       "email": "gerard@yahoo.fr",
       "password": "motdepasse",
       "role": "admin"
+    },
+    {
+      "data": {
+        "typeuser": "Admin",
+        "nom": "Mamma",
+        "prenom": "dkskdmksqmk",
+        "email": "mamadou@gmail.com",
+        "password": "rouguiaiiia"
+      },
+      "id": "yzyRQOm_Q1g"
     }
   ],
   "salles": [
