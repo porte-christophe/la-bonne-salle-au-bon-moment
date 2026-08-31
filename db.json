@@ -15,15 +15,16 @@
   ],
   "salles": [
     {
-      "label": "2dtryuy",
-      "capacity": 9,
-      "site": "cézeaux",
-      "building": "7",
-      "floor": 8,
+      "label": "223",
+      "capacity": 4,
+      "site": "fdfdbfgd",
+      "building": "gyh",
+      "floor": 4,
       "material": [
-        "diams"
+        "dfbgfdgd"
       ],
-      "id": "6vhWJZ0IElw"
+      "id": "IG5XCiyX4D8"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
