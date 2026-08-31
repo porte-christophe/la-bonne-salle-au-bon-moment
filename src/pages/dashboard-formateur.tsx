@@ -1,12 +1,13 @@
 // ---------- Imports --------
 import './dashboard-formateur.css';
 import Salle from "../components/salle";
+import Button from '../components/button';
 
 //--------- Component ---------
 function DashboardFormateur(){
     return (
       <>  <header>
-            <div><button>Se deconnecter</button></div>
+            <div><Button description='se deconnecter'/></div>
         </header>
         <main>
             <div className='grid'>
@@ -33,10 +34,10 @@ function DashboardFormateur(){
         </main>
         <footer>
             <div>
-            <button>Sélectionner une réservation</button>
-            <button>Effectuer une réservation</button>
-            <button>Modifier une reservation</button>
-            <button>Supprimer une reservation</button>
+            <Button description='selectionner une reservation'/>
+            <Button description='effectuer une reservation'/>
+            <Button description='modifier une reservation'/>
+            <Button description='supprimer une reservation'/>
             </div>
         </footer>
       </>
