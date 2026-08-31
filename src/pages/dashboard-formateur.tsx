@@ -34,10 +34,9 @@ function DashboardFormateur(){
         </main>
         <footer>
             <div>
-            <Button description='selectionner une reservation'/>
-            <Button description='effectuer une reservation'/>
-            <Button description='modifier une reservation'/>
-            <Button description='supprimer une reservation'/>
+                <Button description='effectuer une reservation'/>
+                <Button description='modifier une reservation'/>
+                <Button description='supprimer une reservation'/>
             </div>
         </footer>
       </>

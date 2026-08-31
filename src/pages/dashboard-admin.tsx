@@ -40,6 +40,7 @@ function DashboardAdmin(){
             <Button description='ajouter une salle'/>
             <Button description='créer un compte'/>
             <Button description='ajouter une reservation'/>
+            <Button description='modifier une reservation'/>
             <Button description='supprimer une reservation'/>
           </div>
         </footer>
