@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { createSalle } from '../services/salle.service';
 
 const creerSalleSchema = z.object({
-    label: z.string().min(3, "Le label doit comporter au minimum 3 caractères"),
+    label: z.string().min(3, "Le label doit comporter minimum 3 caractères"),
     capacity: z.number().positive("La capacité doit être supérieure à 0"),
     site: z.string().min(3, "Le site doit comporter au minimum 3 caractères"),
     building: z.string().min(1, "Le building doit comporter au minimum 1 caractère"),
