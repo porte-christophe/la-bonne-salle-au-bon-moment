@@ -1,22 +1,14 @@
 // Imports
-import './App.css';
-import Connexion from './pages/connexion';
-import { BrowserRouter, Routes, Route } from "react-router";
-import DashboardAdmin from './pages/dashboard-admin';
+import { BrowserRouter } from "react-router";
+import AppRoutes from "./AppRoutes";
 
 // Compoment
 function App() {
 
   return (
-    <>
     <BrowserRouter>
-        <Routes>
-          <Route path="/dashboard" element={<DashboardAdmin />} />
-        </Routes>
-      </BrowserRouter>
-      {/* <Connexion /> */}
-    </>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
-
-export default App
+export default App;

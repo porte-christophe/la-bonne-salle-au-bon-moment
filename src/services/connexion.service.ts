@@ -4,9 +4,19 @@ export async function checkEmailMdp(
 ): Promise<boolean> { // Pas nécessaire, mais je le laisse pour la lisibilité
   const response = await fetch('http://localhost:3001/users')
   const users = await response.json()
-
-  return users.some(
-    (user: { email: string; password: string }) =>
-      user.email === email && user.password === password,
-  )
+  let valid = false;
+  users.forEach((user: { email: string; password: string; role: string }) => {
+    if (user.email === email && user.password === password) {
+      switch(user.role) {
+        case "formateur":
+          window.location.replace("/dashboardFormateur");
+          break;
+        case "admin":
+          window.location.replace("/dashboardAdmin");
+          break;
+      } 
+      valid = true;
+    }
+  })
+  return valid;
 }
