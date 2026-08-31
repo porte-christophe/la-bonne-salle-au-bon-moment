@@ -1,13 +1,13 @@
 // Imports
 import './App.css';
-import Connexion from './pages/connexion';
+import CreerSalle from './pages/testCreerSalle';
 
 // Compoment
 function App() {
 
   return (
     <>
-      <Connexion />
+      <CreerSalle />
     </>
   )
 }

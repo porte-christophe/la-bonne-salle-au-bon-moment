@@ -12,5 +12,6 @@
       "password": "motdepasse",
       "role": "admin"
     }
-  ]
+  ],
+  "salles": []
 }
