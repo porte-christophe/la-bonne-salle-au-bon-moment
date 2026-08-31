@@ -1,22 +1,41 @@
-//Imports
+// Imports
 import { useState } from 'react';
 import './connexion.css';
+import { useForm } from 'react-hook-form'; 
+import { z } from 'zod'; 
+import { zodResolver } from '@hookform/resolvers/zod'; // AJOUT : pont entre Zod et RHF
 import { checkEmailMdp } from '../services/connexion.service';
 
+const loginSchema = z.object({
+    email: z
+        .string()
+        .min(1, "L'email est obligatoire")
+        .email("L'email est invalide"),
+    password: z
+        .string()
+        .min(1, "Le mot de passe est obligatoire")
+        .min(8, "Le mot de passe doit contenir au moins 8 caractères"),
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
+
 //Component : connexion page
-function connexion() {
-    // Logic 
-    // const emailInput = document.getElementById('email') as HTMLInputElement;
-    // const passwordInput= document.getElementById('password') as HTMLInputElement;
+function Connexion() {
 
-    const [emailInput, setEmailInput] = useState<string>("");
-    const [passwordInput, setPasswordInput] = useState<string>("");
-    const [message, setMessage] = useState<string>(""); // Le message qui s'affichera au clic du bouton, juste là pour le test
+    const [message, setMessage] = useState<string>(""); // CONSERVÉ : message de résultat de connexion, affiché après clic
 
-    async function connexionClick() { // La fonction du clic de co, qui remplace la fonction anonyme du test d'avant
-        const isValid = await checkEmailMdp(emailInput, passwordInput);
-        setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect"); // Le message en dessous du formulaire, après clic
-        console.log(isValid); // Juste pour le test, faudra penser à le virer celui-là
+    // AJOUT : mise en place de React Hook Form + Zod (repris du collègue)
+    const {
+        register, // Pour enregistrer et récupérer les champs d'un formulaire par nom
+        handleSubmit, // Gérer la soumission du formulaire
+        formState: { errors }, // Récupère les erreurs de validation
+    } = useForm<LoginFormData>({ resolver: zodResolver(loginSchema) });
+
+    // Fonctions
+    async function onSubmit(data: LoginFormData) {
+        const isValid = await checkEmailMdp(data.email, data.password); // CONSERVÉ : ton appel au service + json-server
+        setMessage(isValid ? "Connexion réussie" : "Identifiant ou mot de passe incorrect"); // CONSERVÉ
+        console.log(isValid); // CONSERVÉ (à retirer avant rendu final, comme noté dans ton commentaire d'origine)
     }
 
     // Component render
@@ -25,30 +44,29 @@ function connexion() {
             <div>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis facere doloremque ullam aspernatur perspiciatis quod laborum minus enim eligendi consequuntur?</p>
                 <div>
-                    <form action="">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                             <label>Identifiant</label>
                             <input
-                                type="text"
-                                value={emailInput}
-                                onChange={(event) => setEmailInput(event.target.value)}
+                                type="email"
+                                {...register("email")}
                             />
-
+                            {errors.email && (<p>{errors.email.message}</p>)} {/* AJOUT : affichage de l'erreur de validation */}
                         </div>
                         <div>
                             <label>Mot de passe</label>
                             <input
                                 type="password"
-                                value={passwordInput}
-                                onChange={(event) => setPasswordInput(event.target.value)}
+                                {...register("password")} // AJOUT : enregistrement du champ dans RHF
                             />
+                            {errors.password && (<p>{errors.password.message}</p>)} {/* AJOUT */}
                         </div>
-                        <button type="button" onClick={connexionClick}>Se connecter</button> {/* Appel de la nouvelle fonction clic */}
+                        <button type="submit">Se connecter</button>
                     </form>
-                    {message && <p>{message}</p>} {/* Le fameux message de test */}
+                    {message && <p>{message}</p>}
                 </div>
             </div>
         </>
     )
 }
-export default connexion;
+export default Connexion;
