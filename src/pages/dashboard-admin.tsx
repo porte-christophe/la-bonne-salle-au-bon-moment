@@ -5,6 +5,7 @@ import Salle from '../components/salle';
 import { useNavigate } from 'react-router';
 
 
+
 //--------- Component ---------
 function DashboardAdmin(){
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ function DashboardAdmin(){
         <footer>
           <div>
             <Button description='ajouter une salle' onClick={() => navigate('/CreerSalle')}/>
-            <Button description='créer un compte'/>
+            <Button description='créer un compte' onClick={() => navigate('/CreateUserForm')}/>
             <Button description='ajouter une reservation'/>
             <Button description='modifier une reservation'/>
             <Button description='supprimer une reservation'/>
