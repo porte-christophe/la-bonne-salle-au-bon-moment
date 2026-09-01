@@ -10,7 +10,6 @@ const API_URL = 'http://localhost:3001'; // adapte le port si besoin
 interface Salle {
   id: string;
   label: string;
-  nom: string;
   capacity: number;
   site: string;
   building: string;
@@ -34,7 +33,7 @@ interface CurrentUser {
   role: string;
 }
 
-// Vérifie qu'aucune AUTRE réservation (idAExclure = celle en cours de modification n'occupe déjà la même salle sur le même créneau.
+// Vérifie qu'aucune AUTRE réservation (idAExclure = celle en cours de modification) n'occupe déjà la même salle sur le même créneau.
 function estDisponible(
   reservations: Reservation[],
   salleId: string,
@@ -218,7 +217,7 @@ function ModifierReservation() {
               const salle = salles.find((s) => s.id === r.salleId);
               return (
                 <option key={r.id} value={r.id}>
-                  {salle ? salle.nom : r.salleId} — {r.date} {r.heureDebut}-{r.heureFin}
+                  {salle ? salle.label : r.salleId} — {r.date} {r.heureDebut}-{r.heureFin}
                 </option>
               );
             })}
@@ -234,7 +233,7 @@ function ModifierReservation() {
               >
                 {salles.map((s) => (
                   <option key={s.id} value={s.id}>
-                    {s.nom} — Salle {s.label} ({s.building}, étage {s.floor})
+                    Salle {s.label} ({s.building}, étage {s.floor})
                   </option>
                 ))}
               </select>
