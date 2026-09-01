@@ -10,10 +10,18 @@ import Button from '../components/button';
 
 //----------- Logic -----------
 const creerSalleSchema = z.object({
-    label: z.string().min(3, "Le label doit comporter minimum 3 caractères"),
-    capacity: z.number().positive("La capacité doit être supérieure à 0"),
-    site: z.string().min(3, "Le site doit comporter au minimum 3 caractères"),
-    building: z.string().min(1, "Le building doit comporter au minimum 1 caractère"),
+    label: z
+        .string()
+        .min(3, "Le nom de la salle doit avoir au minimum 3 caractères."),
+    capacity: z
+        .number()
+        .positive("La capacité doit être supérieure à 0."),
+    site: z
+        .string()
+        .min(3, "Le site doit avoir au minimum 3 caractères."),
+    building: z
+        .string()
+        .min(1, "Le bâtiment doit avoir au minimum 1 caractère."),
     floor: z.number(),
     material: z.string().optional(),
 });
@@ -52,14 +60,14 @@ function CreerSalle() {
                     <h2>Ajouter une nouvelle salle</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div>
-                            <label>Numéro de salle</label>
-                            <input type="text" {...register("label")} />
+                            <label>Nom de salle</label>
+                            <input type="text" {...register("label")} placeholder='Salle informatique'/>
                             {errors.label && <p>{errors.label.message}</p>}
                         </div>
 
                         <div>
                             <label>Capacité d'accueil</label>
-                            <input type="number" {...register("capacity", { valueAsNumber: true })} />
+                            <input type="number" {...register("capacity", { valueAsNumber: true })} min={0}/>
                             {errors.capacity && <p>{errors.capacity.message}</p>}
                         </div>
 
@@ -70,19 +78,19 @@ function CreerSalle() {
 
                         <div>
                             <label>Site</label>
-                            <input type="text" {...register("site")} />
+                            <input type="text" {...register("site")} placeholder='Campus Ouest' />
                             {errors.site && <p>{errors.site.message}</p>}
                         </div>
 
                         <div>
                             <label>Bâtiment</label>
-                            <input type="text" {...register("building")} />
+                            <input type="text" {...register("building")} placeholder='Bâtiment Charles Xavier' />
                             {errors.building && <p>{errors.building.message}</p>}
                         </div>
 
                         <div>
                             <label>Etage</label>
-                            <input type="number" {...register("floor", { valueAsNumber: true })} />
+                            <input type="number" {...register("floor", { valueAsNumber: true })} min={0} placeholder='3'/>
                             {errors.floor && <p>{errors.floor.message}</p>}
                         </div>
 
