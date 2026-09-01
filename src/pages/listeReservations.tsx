@@ -19,7 +19,6 @@ interface Reservation {
 interface Salle {
   id: string;
   label: string;
-  nom: string;
 }
 
 //--------- Component ---------
@@ -47,8 +46,8 @@ function ListeReservations() {
 
   function getNomSalle(salleId: string) {
     const salle = salles.find((s) => s.id === salleId);
-    return salle ? `${salle.nom} (${salle.label})` : salleId;
-  }
+    return salle ? salle.label : salleId;
+}
 
   async function annulerReservation(id: string) {
     const confirme = window.confirm('Annuler cette réservation ?');

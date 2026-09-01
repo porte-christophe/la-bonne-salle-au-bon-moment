@@ -23,8 +23,7 @@
   ],
   "salles": [
     {
-      "label": "223",
-      "nom": "Salle informatique",
+      "label": "Salle informatique - 223",
       "capacity": 4,
       "site": "fdfdbfgd",
       "building": "gyh",
@@ -35,15 +34,46 @@
       "id": "IG5XCiyX4D8"
     },
     {
-      "label": "coco",
-      "capacity": 25,
-      "site": "clermont",
-      "building": "H",
-      "floor": 3,
+      "label": "Salle Java",
+      "capacity": 16,
+      "site": "Pascalis",
+      "building": "Bâtiment principal",
+      "floor": 1,
       "material": [
-        "rien"
+        "tableau"
       ],
-      "id": "On-PGwj3gJc"
+      "id": "neG3zOvn7BI"
+    },
+    {
+      "label": "Salle Python",
+      "capacity": 20,
+      "site": "Pascalis",
+      "building": "Batiment principal",
+      "floor": 1,
+      "material": [
+        "Projecteur"
+      ],
+      "id": "AxGDJqW9P7k"
+    }
+  ],
+  "reservations": [
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-09",
+      "heureDebut": "08:02",
+      "heureFin": "10:02",
+      "motif": "Réunion",
+      "userId": "2",
+      "id": "rrOQODVKNzU"
+    },
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-03",
+      "heureDebut": "08:03",
+      "heureFin": "10:03",
+      "motif": "formation",
+      "userId": "1",
+      "id": "x6LKJHHx__s"
     }
   ],
   "reservations": [],

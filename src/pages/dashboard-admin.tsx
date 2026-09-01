@@ -10,7 +10,6 @@ const API_URL = 'http://localhost:3001';
 interface SalleData {
   id: string;
   label: string;
-  nom: string;
   capacity: number;
   site: string;
   building: string;
@@ -41,7 +40,7 @@ function DashboardAdmin(){
         <div className='grid'>
           {salles.map((salle, index) => (
             <div key={salle.id} className={`div${index + 1}`}>
-              <Salle nom={salle.nom} numero={Number(salle.label)} />
+              <Salle label={salle.label} />
             </div>
           ))}
         </div>
@@ -51,7 +50,7 @@ function DashboardAdmin(){
             <Button description='ajouter une salle' onClick={() => navigate('/CreerSalle')}/>
             <Button description='créer un compte' onClick={() => navigate('/CreateUserForm')}/>
             <Button description='ajouter une reservation' onClick={() => navigate('/creerReservation')}/>
-            <Button description='modifier une reservation'/>
+            <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
             <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
           </div>
         </footer>
