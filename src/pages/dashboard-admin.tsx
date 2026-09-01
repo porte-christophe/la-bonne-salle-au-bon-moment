@@ -2,9 +2,13 @@
 import './dashboard-admin.css';
 import Button from '../components/button';
 import Salle from '../components/salle';
+import { useNavigate } from 'react-router';
+
+
 
 //--------- Component ---------
 function DashboardAdmin(){
+  const navigate = useNavigate();
     return (
       <>  
         <header>
@@ -37,9 +41,10 @@ function DashboardAdmin(){
         </main>
         <footer>
           <div>
-            <Button description='ajouter une salle'/>
-            <Button description='créer un compte'/>
+            <Button description='ajouter une salle' onClick={() => navigate('/CreerSalle')}/>
+            <Button description='créer un compte' onClick={() => navigate('/CreateUserForm')}/>
             <Button description='ajouter une reservation'/>
+            <Button description='modifier une reservation'/>
             <Button description='supprimer une reservation'/>
           </div>
         </footer>
