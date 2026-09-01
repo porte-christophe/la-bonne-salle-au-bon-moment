@@ -10,7 +10,6 @@ const API_URL = 'http://localhost:3001';
 interface SalleData {
   id: string;
   label: string;
-  nom: string;
   capacity: number;
   site: string;
   building: string;
@@ -41,7 +40,7 @@ function DashboardAdmin(){
         <div className='grid'>
           {salles.map((salle, index) => (
             <div key={salle.id} className={`div${index + 1}`}>
-              <Salle nom={salle.nom} numero={Number(salle.label)} />
+              <Salle label={salle.label} />
             </div>
           ))}
         </div>
