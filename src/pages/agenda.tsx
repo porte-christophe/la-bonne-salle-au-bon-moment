@@ -2,7 +2,7 @@ import Button from '../components/button';
 
 import FullCalendar, { useCalendarController } from "@fullcalendar/react";
 import themePlugin from "@fullcalendar/react/themes/monarch"; // YOUR THEME
-import dayGridPlugin from "@fullcalendar/react/daygrid";
+import timeGridPlugin from '@fullcalendar/react/timegrid';
 
 
 // stylesheets
@@ -15,12 +15,15 @@ function Agenda(){
 	//---Logic
 	//var
 	const controller = useCalendarController();
+	let reservation = [
+
+	]
 
 	
 	//---Render 
     return (
     	<>
-    		<div class='toolbar'>
+    		<div>
 		        <Button
 		        	description="Semaine précedente"
 		        	onClick={() => controller.prev()}
@@ -36,9 +39,16 @@ function Agenda(){
 		    </div>
 	    	<FullCalendar
 	    		controller={controller}
-		      	plugins={[themePlugin, dayGridPlugin]}
-		      	initialView="dayGridWeek"
+		      	plugins={[themePlugin, timeGridPlugin]}
+		      	initialView="timeGridWeek"
+		      	slotMinTime="07:00:00"
+		      	slotMaxTime="19:00:00"
+		      	nowIndicator={true}
 		      	weekends={false}
+		      	height={500}
+
+		      	
+
 		    />
 		</>
     	
