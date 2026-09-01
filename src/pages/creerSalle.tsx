@@ -1,9 +1,11 @@
 //----------- Imports -----------
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { createSalle } from '../services/salle.service';
 import './creerSalle.css';
+import Button from '../components/button';
 
 
 //----------- Logic -----------
@@ -20,6 +22,10 @@ type CreerSalleFormData = z.infer<typeof creerSalleSchema>;
 
 // Component render
 function CreerSalle() {
+    // Navigation
+    const navigate = useNavigate();
+
+    // Zod
     const { register, handleSubmit, formState: { errors }, reset } = useForm<CreerSalleFormData>({
         resolver: zodResolver(creerSalleSchema),
     });
@@ -34,47 +40,58 @@ function CreerSalle() {
     }
 
     return (
-        <div className='container'>
-            <h2>Ajouter une nouvelle salle</h2>
-            <form onSubmit={handleSubmit(onSubmit)}>
+        <>
+        
+            <header>
                 <div>
-                    <label>Nom</label>
-                    <input type="text" {...register("label")} />
-                    {errors.label && <p>{errors.label.message}</p>}
+                <Button description="retour" onClick={() => navigate('/DashboardAdmin')} />
                 </div>
+            </header>
+            <main>
+                <div className='container'>
+                    <h2>Ajouter une nouvelle salle</h2>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div>
+                            <label>Numéro de salle</label>
+                            <input type="text" {...register("label")} />
+                            {errors.label && <p>{errors.label.message}</p>}
+                        </div>
 
-                <div>
-                    <label>Capacité d'accueil</label>
-                    <input type="number" {...register("capacity", { valueAsNumber: true })} />
-                    {errors.capacity && <p>{errors.capacity.message}</p>}
+                        <div>
+                            <label>Capacité d'accueil</label>
+                            <input type="number" {...register("capacity", { valueAsNumber: true })} />
+                            {errors.capacity && <p>{errors.capacity.message}</p>}
+                        </div>
+
+                        <div>
+                            <label>Matériel disponible</label>
+                            <input type="text" {...register("material")} />
+                        </div>
+
+                        <div>
+                            <label>Site</label>
+                            <input type="text" {...register("site")} />
+                            {errors.site && <p>{errors.site.message}</p>}
+                        </div>
+
+                        <div>
+                            <label>Bâtiment</label>
+                            <input type="text" {...register("building")} />
+                            {errors.building && <p>{errors.building.message}</p>}
+                        </div>
+
+                        <div>
+                            <label>Etage</label>
+                            <input type="number" {...register("floor", { valueAsNumber: true })} />
+                            {errors.floor && <p>{errors.floor.message}</p>}
+                        </div>
+
+                        <button type="submit">Valider</button>
+                    </form>
                 </div>
-
-                <div>
-                    <label>Matériel disponible</label>
-                    <input type="text" {...register("material")} />
-                </div>
-
-                <div>
-                    <label>Site</label>
-                    <input type="text" {...register("site")} />
-                    {errors.site && <p>{errors.site.message}</p>}
-                </div>
-
-                <div>
-                    <label>Bâtiment</label>
-                    <input type="text" {...register("building")} />
-                    {errors.building && <p>{errors.building.message}</p>}
-                </div>
-
-                <div>
-                    <label>Etage</label>
-                    <input type="number" {...register("floor", { valueAsNumber: true })} />
-                    {errors.floor && <p>{errors.floor.message}</p>}
-                </div>
-
-                <button type="submit">Valider</button>
-            </form>
-        </div>
+            </main>
+            
+        </>
     );
 }
 
