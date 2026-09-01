@@ -8,7 +8,8 @@ export async function createSalle(salle: object) {
 
   return response.json();
 }
-const API_URL = "http://localhost:3000/salles";
+
+const API_URL = "http://localhost:3001/salles";
 
 export async function getSalles() {
   const response = await fetch(API_URL);
@@ -19,3 +20,19 @@ export async function getSalles() {
 
   return response.json();
 }
+
+/*const API_URL = "http://localhost:3001/salles";
+
+export async function getSalles() {
+  const response = await fetch(API_URL);
+
+  if (!response.ok) {
+    throw new Error("Erreur lors de la récupération des salles");
+  }
+
+  const data = await response.json();
+
+  console.log("API salles :", data);
+
+  return data;
+}*/

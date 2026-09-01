@@ -1,11 +1,15 @@
+// ---------- Imports --------
+import './dashboard-admin.css';
+import Button from '../components/button';
 import { useEffect, useState } from "react";
 import { getSalles } from "../services/salle.service";
 
+
 type Salle = {
-  id: string;
-  nom: string;
-  numero: string;
-  capacite: number;
+  label: number;
+  capacity: string;
+  site: string;
+  floor: number;
 };
 
 function DashboardFormateur() {
@@ -32,6 +36,14 @@ function DashboardFormateur() {
   }
 
   return (
+    
+    <>
+   
+    <header>
+          <div>
+            <Button description='se deconnecter'/>
+          </div>
+    </header>
     <div className="p-6">
 
       <h1 className="text-3xl font-bold mb-6">
@@ -46,20 +58,20 @@ function DashboardFormateur() {
 
         {salles.map((salle) => (
           <div
-            key={salle.id}
+            key={salle.site}
             className="border-2 border-gray-300 rounded-lg p-5 shadow-md"
           >
 
             <h3 className="text-xl font-bold mb-3">
-              {salle.nom}
+              {salle.label}
             </h3>
 
             <p>
-              Numéro : <strong>{salle.numero}</strong>
+              Numéro : <strong>{salle.floor}</strong>
             </p>
 
             <p>
-              Capacité : <strong>{salle.capacite} personnes</strong>
+              Capacité : <strong>{salle.capacity} personnes</strong>
             </p>
 
           </div>
@@ -68,6 +80,15 @@ function DashboardFormateur() {
       </div>
 
     </div>
+    <footer>
+          <div>
+            <Button description='Selectionner une reservation'/>
+            <Button description='Effecuer une reservation'/>
+            <Button description='Modifier une reservation'/>
+            <Button description='Supprimer une reservation'/>
+          </div>
+        </footer>
+</>
   );
 }
 
