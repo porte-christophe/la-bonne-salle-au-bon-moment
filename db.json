@@ -34,6 +34,39 @@
       "id": "IG5XCiyX4D8"
     },
     {
+      "label": "Camin",
+      "capacity": 4,
+      "site": "hfff",
+      "building": "112",
+      "floor": 8,
+      "material": [
+        "777"
+      ],
+      "id": "3904QrKVG9Y"
+    },
+    {
+      "label": "Salle 12",
+      "capacity": 15,
+      "site": "hfdkjhskdhasfk",
+      "building": "12",
+      "floor": 5,
+      "material": [
+        "hjhjj"
+      ],
+      "id": "HePvpvfFWn0"
+    },
+    {
+      "label": "Salle informatique",
+      "capacity": 12,
+      "site": "15 C",
+      "building": "52",
+      "floor": 4,
+      "material": [
+        "45 ordinateur"
+      ],
+      "id": "01PghzY7SaE" 
+    },
+    {
       "label": "Salle Java",
       "capacity": 16,
       "site": "Pascalis",
@@ -76,6 +109,6 @@
       "id": "x6LKJHHx__s"
     }
   ],
-  "reservations": [],
+  
   "$schema": "./node_modules/json-server/schema.json"
 }
