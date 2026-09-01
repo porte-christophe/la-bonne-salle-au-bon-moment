@@ -19,7 +19,6 @@ interface Reservation {
 interface Salle {
   id: string;
   label: string;
-  nom: string;
 }
 
 //--------- Component ---------
