@@ -1,5 +1,5 @@
 // ---------- Imports --------
-import './dashboard-admin.css';
+import './dashboard-formateur.css'
 import Button from '../components/button';
 import { useEffect, useState } from "react";
 import { getSalles } from "../services/salle.service";
@@ -46,34 +46,34 @@ function DashboardFormateur() {
     </header>
     <div className="p-6">
 
-      <h1 className="text-3xl font-bold mb-6">
+      <h1>
         Dashboard Formateur
       </h1>
+    
+     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 ">
+  {salles.map((salle) => (
+    <div
+      key={salle.label}
+      className="salle-card"
+    >
 
-        {salles.map((salle) => (
-          <div
-            key={salle.site}
-            className="border-2 border-gray-300 rounded-lg p-5 shadow-md"
-          >
+      <h3 className="salle-title">
+        {salle.label}
+      </h3>
 
-            <h3 className="text-xl font-bold mb-3">
-              {salle.label}
-            </h3>
+      <p className="salle-info">
+        Numéro : <strong>{salle.floor}</strong>
+      </p>
 
-            <p>
-              Numéro : <strong>{salle.floor}</strong>
-            </p>
+      <p className="salle-info">
+        Capacité : <strong>{salle.capacity} personnes</strong>
+      </p>
 
-            <p>
-              Capacité : <strong>{salle.capacity} personnes</strong>
-            </p>
+    </div>
+  ))}
 
-          </div>
-        ))}
-
-      </div>
+</div>
 
     </div>
     <footer>
