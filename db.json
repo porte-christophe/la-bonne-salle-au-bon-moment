@@ -13,24 +13,12 @@
       "role": "admin"
     },
     {
-      "users": {
-        "typeuser": "Admin",
-        "nom": "Mamma",
-        "prenom": "dkskdmksqmk",
-        "email": "mamadou@gmail.com",
-        "password": "rouguiaiiia"
-      },
-      "id": "yzyRQOm_Q1g"
-    },
-    {
-      "users": {
-        "typeuser": "Admin",
-        "nom": "ramana",
-        "prenom": "mamadou",
-        "email": "mamadou@gmail.com",
-        "password": "lkzjfnz"
-      },
-      "id": "eccaH49lSRA"
+      "role": "Admin",
+      "nom": "Machin",
+      "prenom": "Truc",
+      "email": "gabriel.albinet.pro@gmail.com",
+      "password": "TestMdpTest",
+      "id": "WfGDaVOqGKg"
     }
   ],
   "salles": [

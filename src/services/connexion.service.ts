@@ -7,7 +7,7 @@ export async function checkEmailMdp(
   let valid = false;
   users.forEach((user: { email: string; password: string; role: string }) => {
     if (user.email === email && user.password === password) {
-      switch(user.role) {
+      switch(user.role.toLowerCase()) {
         case "formateur":
           window.location.replace("/dashboardFormateur");
           break;

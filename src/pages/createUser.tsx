@@ -5,7 +5,7 @@ import { createUser as createUserService } from "../services/user.service";
 
 // Schéma de validation
 const utilisateurSchema = z.object({
-  typeuser: z.enum(["Admin", "Formateur"], {
+  role: z.enum(["Admin", "Formateur"], {
     message: "Veuillez sélectionner un utilisateur",
   }),
 
@@ -42,10 +42,9 @@ function CreateUserForm() {
   // Fonction appelée lors de la validation du formulaire
  
   async function onSubmit(data: UserForm) {
-
-        await createUserService({data});
-        reset();
-    }
+    await createUserService(data);
+    reset();
+}
 
   return (
     <div className="bg-gray-400 p-6 rounded-lg">
@@ -58,7 +57,7 @@ function CreateUserForm() {
           </label>
 
           <select
-            {...register("typeuser")}
+            {...register("role")}
             className="border border-gray-300 p-2 rounded"
           >
             <option value="">Sélectionnez un utilisateur</option>
@@ -66,9 +65,9 @@ function CreateUserForm() {
             <option value="Formateur">Formateur</option>
           </select>
 
-          {errors.typeuser && (
+          {errors.role && (
             <p className="text-red-600">
-              {errors.typeuser.message}
+              {errors.role.message}
             </p>
           )}
         </div>
