@@ -39,7 +39,7 @@ function DashboardFormateur() {
     <>
       <header>
         <div>
-          <Button description='se deconnecter' />
+          <Button description='se deconnecter' onClick={() => navigate('/')}/>
         </div>
       </header>
 
