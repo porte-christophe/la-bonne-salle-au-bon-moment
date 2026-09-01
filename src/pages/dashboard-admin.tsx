@@ -41,7 +41,7 @@ function DashboardAdmin(){
         <div className='grid'>
           {salles.map((salle, index) => (
             <div key={salle.id} className={`div${index + 1}`}>
-              <Salle nom={salle.nom} numero={Number(salle.label)} />
+              <Salle label={salle.label} numero={Number(salle.label)} />
             </div>
           ))}
         </div>

@@ -14,13 +14,13 @@ function DashboardFormateur(){
         <main>
             <div className='grid'>
                 <div className="div1">
-                    <Salle nom="Salle Informatique" numero={101}/>
+                    <Salle label="Salle Informatique" numero={101}/>
                 </div>
                 <div className="div2">
-                    <Salle nom="Salle de Réunion" numero={102} />
+                    <Salle label="Salle de Réunion" numero={102} />
                 </div>
                 <div className="div3">
-                    <Salle nom="Salle de Formation" numero={103} />
+                    <Salle label="Salle de Formation" numero={103} />
                 </div>
                 <div className="div4">4</div>
                 <div className="div5">5</div>

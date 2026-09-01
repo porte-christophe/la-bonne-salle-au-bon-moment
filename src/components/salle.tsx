@@ -1,18 +1,13 @@
 interface Salles {
-  nom: string;
+  label: string;
   numero: number;
 }
 
-function Salle({ nom, numero }: Salles) {
+function Salle({ label, numero }: Salles) {
   return (
     <div>
-      <p>
-        Salle : {nom}
-      </p>
-
-      <p>
-        Numéro : {numero}
-      </p>
+      <p>Salle : {label}</p>
+      <p>Numéro : {numero}</p>
     </div>
   );
 }
