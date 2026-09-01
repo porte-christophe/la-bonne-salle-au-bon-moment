@@ -21,6 +21,7 @@ interface Salle {
 //--------- Component ---------
 function CreerReservation() {
   const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem('user') || 'null'); // AJOUT
 
   const [salles, setSalles] = useState<Salle[]>([]);
   const [salleId, setSalleId] = useState('');
@@ -60,6 +61,7 @@ function CreerReservation() {
           heureDebut,
           heureFin,
           motif,
+          userId: currentUser?.id, // AJOUT
         }),
       });
 

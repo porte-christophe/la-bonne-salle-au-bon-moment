@@ -2,12 +2,10 @@ interface Salles {
   label: string;
 }
 
-function Salle({ label}: Salles) {
+function Salle({ label }: Salles) {
   return (
     <div>
-      <p>
-        Salle : {label}
-      </p>
+      <p>Salle : {label}</p>
     </div>
   );
 }
