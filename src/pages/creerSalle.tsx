@@ -1,4 +1,5 @@
 //----------- Imports -----------
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { z } from 'zod';
@@ -9,6 +10,7 @@ import Button from '../components/button';
 
 
 //----------- Logic -----------
+// Validation schema
 const creerSalleSchema = z.object({
     label: z
         .string()
@@ -28,10 +30,12 @@ const creerSalleSchema = z.object({
 
 type CreerSalleFormData = z.infer<typeof creerSalleSchema>;
 
-// Component render
+//---------- Component render ----------
 function CreerSalle() {
     // Navigation
     const navigate = useNavigate();
+    // Message display (after click on the submit button)
+    const [message, setMessage] = useState<string>("");
 
     // Zod
     const { register, handleSubmit, formState: { errors }, reset } = useForm<CreerSalleFormData>({
@@ -45,6 +49,8 @@ function CreerSalle() {
 
         await createSalle({ ...data, material });
         reset();
+
+        setMessage("Salle ajoutée");
     }
 
     return (
@@ -95,6 +101,7 @@ function CreerSalle() {
                         </div>
 
                         <button type="submit">Valider</button>
+                        {message && <p>{message}</p>}
                     </form>
                 </div>
             </main>

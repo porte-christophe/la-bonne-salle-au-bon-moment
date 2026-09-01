@@ -23,8 +23,7 @@
   ],
   "salles": [
     {
-      "label": "223",
-      "nom": "Salle informatique",
+      "label": "Salle informatique - 223",
       "capacity": 4,
       "site": "fdfdbfgd",
       "building": "gyh",
@@ -33,6 +32,28 @@
         "dfbgfdgd"
       ],
       "id": "IG5XCiyX4D8"
+    },
+    {
+      "label": "Salle Java",
+      "capacity": 16,
+      "site": "Pascalis",
+      "building": "Bâtiment principal",
+      "floor": 1,
+      "material": [
+        "tableau"
+      ],
+      "id": "neG3zOvn7BI"
+    },
+    {
+      "label": "Salle Python",
+      "capacity": 20,
+      "site": "Pascalis",
+      "building": "Batiment principal",
+      "floor": 1,
+      "material": [
+        "Projecteur"
+      ],
+      "id": "AxGDJqW9P7k"
     }
   ],
   "reservations": [
