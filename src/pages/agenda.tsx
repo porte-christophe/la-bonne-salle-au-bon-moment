@@ -19,7 +19,6 @@ function Agenda(){
 	interface SalleData {
 	 	id: string;
 	  	label: string;
-	  	nom: string;
 	  	capacity: number;
 	  	site: string;
 	  	building: string;
