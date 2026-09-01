@@ -1,49 +1,82 @@
 // ---------- Imports --------
-import './dashboard-formateur.css';
-import Salle from "../components/salle";
+import './dashboard-formateur.css'
 import Button from '../components/button';
-import { useNavigate } from 'react-router'; // AJOUT
+import { useEffect, useState } from "react";
+import { getSalles } from "../services/salle.service";
+import { useNavigate } from 'react-router';
 
-//--------- Component ---------
-function DashboardFormateur(){
-    const navigate = useNavigate(); // AJOUT
-    return (
-      <>  <header>
-            <div><Button description='se deconnecter'/></div>
-        </header>
-        <main>
-            <div className='grid'>
-                <div className="div1">
-                    <Salle label="Salle Informatique"/>
-                </div>
-                <div className="div2">
-                    <Salle label="Salle de Réunion"/>
-                </div>
-                <div className="div3">
-                    <Salle label="Salle de Formation"/>
-                </div>
-                <div className="div4">4</div>
-                <div className="div5">5</div>
-                <div className="div6">6</div>
-                <div className="div7">7</div>
-                <div className="div8">8</div>
-                <div className="div9">9</div>
-                <div className="div10">10</div>
-                <div className="div11">11</div>
-                <div className="div12">12</div>
-                <div className="div13">13</div>
-            </div>
-        </main>
-        <footer>
-            <div>
-                <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')}/>
-                <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
-                <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
-            </div>
-        </footer>
-      </>
-    )
+type Salle = {
+  label: string;
+  capacity: string;
+  site: string;
+  floor: number;
+};
 
+function DashboardFormateur() {
+  const [salles, setSalles] = useState<Salle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    async function chargerSalles() {
+      try {
+        const data = await getSalles();
+        setSalles(data);
+      } catch (error) {
+        console.error("Erreur :", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    chargerSalles();
+  }, []);
+
+  if (loading) {
+    return <p>Chargement des salles...</p>;
+  }
+
+  return (
+    <>
+      <header>
+        <div>
+          <Button description='se deconnecter' />
+        </div>
+      </header>
+
+      <div className="p-6">
+        <h1>
+          Dashboard Formateur
+        </h1>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {salles.map((salle) => (
+            <div
+              key={salle.label}
+              className="salle-card"
+            >
+              <h3 className="salle-title">
+                {salle.label}
+              </h3>
+              <p className="salle-info">
+                Numéro : <strong>{salle.floor}</strong>
+              </p>
+              <p className="salle-info">
+                Capacité : <strong>{salle.capacity} personnes</strong>
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')} />
+          <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')} />
+          <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')} />
+        </div>
+      </footer>
+    </>
+  );
 }
 
 export default DashboardFormateur;
