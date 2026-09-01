@@ -24,6 +24,7 @@
   "salles": [
     {
       "label": "223",
+      "nom": "Salle informatique",
       "capacity": 4,
       "site": "fdfdbfgd",
       "building": "gyh",
@@ -32,6 +33,24 @@
         "dfbgfdgd"
       ],
       "id": "IG5XCiyX4D8"
+    }
+  ],
+  "reservations": [
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-02",
+      "heureDebut": "09:23",
+      "heureFin": "13:23",
+      "motif": "Formation",
+      "id": "eoxkrpdnBsQ"
+    },
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-02",
+      "heureDebut": "09:27",
+      "heureFin": "14:27",
+      "motif": "Formation",
+      "id": "DqATcqN1Qz8"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
