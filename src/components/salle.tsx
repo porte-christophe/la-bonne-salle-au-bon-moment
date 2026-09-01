@@ -1,13 +1,11 @@
 interface Salles {
   label: string;
-  numero: number;
 }
 
-function Salle({ label, numero }: Salles) {
+function Salle({ label }: Salles) {
   return (
     <div>
       <p>Salle : {label}</p>
-      <p>Numéro : {numero}</p>
     </div>
   );
 }

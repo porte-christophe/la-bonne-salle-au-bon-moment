@@ -14,13 +14,13 @@ function DashboardFormateur(){
         <main>
             <div className='grid'>
                 <div className="div1">
-                    <Salle label="Salle Informatique" numero={101}/>
+                    <Salle label="Salle Informatique"/>
                 </div>
                 <div className="div2">
-                    <Salle label="Salle de Réunion" numero={102} />
+                    <Salle label="Salle de Réunion"/>
                 </div>
                 <div className="div3">
-                    <Salle label="Salle de Formation" numero={103} />
+                    <Salle label="Salle de Formation"/>
                 </div>
                 <div className="div4">4</div>
                 <div className="div5">5</div>
@@ -38,7 +38,7 @@ function DashboardFormateur(){
             <div>
                 <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')}/>
                 <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
-                <Button description='supprimer une reservation'/>
+                <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
             </div>
         </footer>
       </>
