@@ -9,7 +9,7 @@ function DashboardFormateur(){
     const navigate = useNavigate(); // AJOUT
     return (
       <>  <header>
-            <div><Button description='se deconnecter'/></div>
+            <Button description='se deconnecter' onClick={() => navigate('/')}/>
         </header>
         <main>
             <div className='grid'>

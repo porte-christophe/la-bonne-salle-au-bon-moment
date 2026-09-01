@@ -4,6 +4,7 @@
   max-width: 400px;
   margin: 2rem auto;
   gap: 1rem;
+  line-height: 1.3;
 }
 
 .form-container label {
