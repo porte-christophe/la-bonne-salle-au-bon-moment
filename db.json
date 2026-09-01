@@ -23,7 +23,7 @@
   ],
   "salles": [
     {
-      "label": "223",
+      "label": "Salle informatique - 223",
       "capacity": 4,
       "site": "fdfdbfgd",
       "building": "gyh",
@@ -64,7 +64,49 @@
       "material": [
         "45 ordinateur"
       ],
-      "id": "01PghzY7SaE"
+      "id": "01PghzY7SaE" 
+    },
+    {
+      "label": "Salle Java",
+      "capacity": 16,
+      "site": "Pascalis",
+      "building": "Bâtiment principal",
+      "floor": 1,
+      "material": [
+        "tableau"
+      ],
+      "id": "neG3zOvn7BI"
+    },
+    {
+      "label": "Salle Python",
+      "capacity": 20,
+      "site": "Pascalis",
+      "building": "Batiment principal",
+      "floor": 1,
+      "material": [
+        "Projecteur"
+      ],
+      "id": "AxGDJqW9P7k"
+    }
+  ],
+  "reservations": [
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-09",
+      "heureDebut": "08:02",
+      "heureFin": "10:02",
+      "motif": "Réunion",
+      "userId": "2",
+      "id": "rrOQODVKNzU"
+    },
+    {
+      "salleId": "IG5XCiyX4D8",
+      "date": "2026-09-03",
+      "heureDebut": "08:03",
+      "heureFin": "10:03",
+      "motif": "formation",
+      "userId": "1",
+      "id": "x6LKJHHx__s"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -3,18 +3,20 @@ import './dashboard-formateur.css'
 import Button from '../components/button';
 import { useEffect, useState } from "react";
 import { getSalles } from "../services/salle.service";
+import { useNavigate } from 'react-router';
 
 
 type Salle = {
-  label: number;
+  label: string;
   capacity: string;
   site: string;
   floor: number;
 };
 
 function DashboardFormateur() {
-  const [salles, setSalles] = useState<Salle[]>([]);
-  const [loading, setLoading] = useState(true);
+    const [salles, setSalles] = useState<Salle[]>([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
   useEffect(() => {
     async function chargerSalles() {
@@ -36,6 +38,7 @@ function DashboardFormateur() {
   }
 
   return (
+    
     
     <>
    
@@ -76,13 +79,12 @@ function DashboardFormateur() {
 </div>
 
     </div>
-    <footer>
-          <div>
-            <Button description='Selectionner une reservation'/>
-            <Button description='Effecuer une reservation'/>
-            <Button description='Modifier une reservation'/>
-            <Button description='Supprimer une reservation'/>
-          </div>
+  <footer>
+            <div>
+                <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')}/>
+                <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
+                <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
+            </div>
         </footer>
 </>
   );
