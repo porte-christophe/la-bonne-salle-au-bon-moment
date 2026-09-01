@@ -5,9 +5,6 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod'; 
 import { zodResolver } from '@hookform/resolvers/zod'; // AJOUT : pont entre Zod et RHF
 import { checkEmailMdp } from '../services/connexion.service';
-import Button from '../components/button';
-
-
 
 //Component : connexion page
 function Connexion() {
