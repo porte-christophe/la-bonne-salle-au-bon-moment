@@ -52,7 +52,7 @@ function DashboardAdmin(){
             <Button description='créer un compte' onClick={() => navigate('/CreateUserForm')}/>
             <Button description='ajouter une reservation' onClick={() => navigate('/creerReservation')}/>
             <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
-            <Button description='supprimer une reservation'/>
+            <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
           </div>
         </footer>
       </>
