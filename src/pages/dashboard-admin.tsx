@@ -10,7 +10,6 @@ const API_URL = 'http://localhost:3001';
 interface SalleData {
   id: string;
   label: string;
-  nom: string;
   capacity: number;
   site: string;
   building: string;
