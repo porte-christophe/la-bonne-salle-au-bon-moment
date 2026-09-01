@@ -2,9 +2,11 @@
 import './dashboard-formateur.css';
 import Salle from "../components/salle";
 import Button from '../components/button';
+import { useNavigate } from 'react-router'; // AJOUT
 
 //--------- Component ---------
 function DashboardFormateur(){
+    const navigate = useNavigate(); // AJOUT
     return (
       <>  <header>
             <div><Button description='se deconnecter'/></div>
@@ -34,8 +36,8 @@ function DashboardFormateur(){
         </main>
         <footer>
             <div>
-                <Button description='effectuer une reservation'/>
-                <Button description='modifier une reservation'/>
+                <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')}/>
+                <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
                 <Button description='supprimer une reservation'/>
             </div>
         </footer>
