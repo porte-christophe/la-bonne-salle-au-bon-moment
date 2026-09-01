@@ -3,12 +3,33 @@ import './dashboard-admin.css';
 import Button from '../components/button';
 import Salle from '../components/salle';
 import { useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
 
+const API_URL = 'http://localhost:3001';
 
+interface SalleData {
+  id: string;
+  label: string;
+  nom: string;
+  capacity: number;
+  site: string;
+  building: string;
+  floor: number;
+  material: string[];
+}
 
 //--------- Component ---------
 function DashboardAdmin(){
   const navigate = useNavigate();
+   const [salles, setSalles] = useState<SalleData[]>([]);
+
+   useEffect(() => {
+    fetch(`${API_URL}/salles`)
+      .then((res) => res.json())
+      .then((data) => setSalles(data))
+      .catch((err) => console.error('Erreur lors du chargement des salles', err));
+  }, []);
+  
     return (
       <>  
         <header>
@@ -17,35 +38,21 @@ function DashboardAdmin(){
           </div>
         </header>
         <main>
-          <div className='grid'>
-        <div className="div1">
-          <Salle nom="Salle Informatique" numero={101}/>
+        <div className='grid'>
+          {salles.map((salle, index) => (
+            <div key={salle.id} className={`div${index + 1}`}>
+              <Salle label={salle.label} />
+            </div>
+          ))}
         </div>
-        <div className="div2">
-          <Salle nom="Salle de Réunion" numero={102} />
-        </div>
-        <div className="div3">
-          <Salle nom="Salle de Formation" numero={103} />
-        </div>
-        <div className="div4">4</div>
-        <div className="div5">5</div>
-        <div className="div6">6</div>
-        <div className="div7">7</div>
-        <div className="div8">8</div>
-        <div className="div9">9</div>
-        <div className="div10">10</div>
-        <div className="div11">11</div>
-        <div className="div12">12</div>
-        <div className="div13">13</div>
-          </div>
-        </main>
+      </main>
         <footer>
           <div>
             <Button description='ajouter une salle' onClick={() => navigate('/CreerSalle')}/>
             <Button description='créer un compte' onClick={() => navigate('/CreateUserForm')}/>
-            <Button description='ajouter une reservation'/>
-            <Button description='modifier une reservation'/>
-            <Button description='supprimer une reservation'/>
+            <Button description='ajouter une reservation' onClick={() => navigate('/creerReservation')}/>
+            <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
+            <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
           </div>
         </footer>
       </>

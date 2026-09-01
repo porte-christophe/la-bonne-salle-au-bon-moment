@@ -5,8 +5,9 @@ export async function checkEmailMdp(
   const response = await fetch('http://localhost:3001/users')
   const users = await response.json()
   let valid = false;
-  users.forEach((user: { email: string; password: string; role: string }) => {
+  users.forEach((user: { id: string; email: string; password: string; role: string }) => {
     if (user.email === email && user.password === password) {
+      localStorage.setItem('user', JSON.stringify({ id: user.id, email: user.email, role: user.role })); // AJOUT
       switch(user.role.toLowerCase()) {
         case "formateur":
           window.location.replace("/dashboardFormateur");

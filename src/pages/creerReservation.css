@@ -1,0 +1,22 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 2rem auto;
+  gap: 1rem;
+}
+
+.form-container label {
+  font-weight: bold;
+}
+
+.form-container input,
+.form-container select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.erreur {
+  color: red;
+}
