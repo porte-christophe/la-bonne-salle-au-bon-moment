@@ -25,24 +25,60 @@ function Agenda(){
 	  	floor: number;
 	  	material: string[];
 	}
+	interface ReservationData {
+		salleId: string;
+		date: string;
+		heureDebut: string;
+		heureFin: string;
+		motif: string;
+		userId: string;
+		id: string;
+	}
+	interface eventData {
+		title: string;
+		start: string;
+		end: string;
+	}
 	//var
 	const controller = useCalendarController();
 	const [salles, setSalles] = useState<SalleData[]>([]);
+	const [reservations, setReservations] = useState<ReservationData[]>([]);
+	let [events, setEvents] = useState<eventData[]>([]);
 
    	useEffect(() => {
     	fetch(`${API_URL}/salles`)
       	.then((res) => res.json())
       	.then((data) => setSalles(data))
       	.catch((err) => console.error('Erreur lors du chargement des salles', err));
+      	fetch(`${API_URL}/reservations`)
+      	.then((res) => res.json())
+      	.then((data) => setReservations(data))
+      	.catch((err) => console.error('Erreur lors du chargement des réservations', err));
   	}, []);
 
+  	function reser(id:string){
+  		let eventsTemp = [];
+  		reservations.forEach((res)=>{
+  			if (res.salleId === id) {
+  				console.log(res);
+  				eventsTemp.push({	title: res.motif,
+  							start: res.date + "T" + res.heureDebut,
+  							end: res.date + "T" + res.heureFin,
+  				})
+  				setEvents(eventsTemp);
+  				
+  			}
+  		})
+  	}
+  	
 	
 	//---Render 
     return (
     	<>
-    		<select>
+    		<select onChange={()=>reser(event.target.value)}>
+    			<option>--Veuillez choisir une salle--</option>
     			{salles.map((salle, index) => (
-            		<option key = {index} >{salle.label}</option>
+            		<option key = {index} value={salle.id}>{salle.label}</option>
           		))}
     		</select>
     		<div>
@@ -51,7 +87,7 @@ function Agenda(){
 		        	onClick={() => controller.prev()}
 		        />
 		        <Button
-		        	description="Aujord'hui"
+		        	description="Aujourd'hui"
 		        	onClick={() => controller.today()}
 		        />
 		        <Button
@@ -68,7 +104,7 @@ function Agenda(){
 		      	nowIndicator={true}
 		      	weekends={false}
 		      	height={500}
-
+		      	events={events}
 		      	
 
 		    />
