@@ -1,7 +1,16 @@
+// src/pages/createUser.tsx
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useNavigate } from "react-router";
 import { createUser as createUserService } from "../services/user.service";
+import Button from "../components/button";
+
+interface CurrentUser {
+  id: string;
+  email: string;
+  role: string;
+}
 
 // Schéma de validation
 const utilisateurSchema = z.object({
@@ -30,6 +39,12 @@ const utilisateurSchema = z.object({
 type UserForm = z.infer<typeof utilisateurSchema>;
 
 function CreateUserForm() {
+  const navigate = useNavigate();
+
+  const currentUser: CurrentUser | null = JSON.parse(
+    localStorage.getItem('user') || 'null',
+  );
+
   const {
     register,
     handleSubmit,
@@ -40,11 +55,45 @@ function CreateUserForm() {
   });
 
   // Fonction appelée lors de la validation du formulaire
- 
   async function onSubmit(data: UserForm) {
     await createUserService(data);
     reset();
-}
+  }
+
+  if (!currentUser) {
+    return (
+      <>
+        <header>
+          <div>
+            <Button description="retour" onClick={() => navigate('/')} />
+          </div>
+        </header>
+        <main>
+          <p>Vous devez être connecté pour créer un compte.</p>
+        </main>
+      </>
+    );
+  }
+
+  if (currentUser.role.toLowerCase() !== 'admin') {
+    return (
+      <>
+        <header>
+          <div>
+            <Button
+              description="retour"
+              onClick={() =>
+                navigate(currentUser.role.toLowerCase() === 'admin' ? '/dashboardAdmin' : '/dashboardFormateur')
+              }
+            />
+          </div>
+        </header>
+        <main>
+          <p>Vous n'êtes pas autorisé à créer un compte.</p>
+        </main>
+      </>
+    );
+  }
 
   return (
     <div className="bg-gray-400 p-6 rounded-lg">

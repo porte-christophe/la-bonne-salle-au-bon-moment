@@ -1,3 +1,4 @@
+// src/pages/creerSalle.tsx
 //----------- Imports -----------
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -8,6 +9,11 @@ import { createSalle } from '../services/salle.service';
 import './creerSalle.css';
 import Button from '../components/button';
 
+interface CurrentUser {
+  id: string;
+  email: string;
+  role: string;
+}
 
 //----------- Logic -----------
 // Validation schema
@@ -34,6 +40,11 @@ type CreerSalleFormData = z.infer<typeof creerSalleSchema>;
 function CreerSalle() {
     // Navigation
     const navigate = useNavigate();
+
+    const currentUser: CurrentUser | null = JSON.parse(
+        localStorage.getItem('user') || 'null',
+    );
+
     // Message display (after click on the submit button)
     const [message, setMessage] = useState<string>("");
 
@@ -53,9 +64,43 @@ function CreerSalle() {
         setMessage("Salle ajoutée");
     }
 
+    if (!currentUser) {
+        return (
+            <>
+                <header>
+                    <div>
+                        <Button description="retour" onClick={() => navigate('/')} />
+                    </div>
+                </header>
+                <main>
+                    <p>Vous devez être connecté pour créer une salle.</p>
+                </main>
+            </>
+        );
+    }
+
+    if (currentUser.role.toLowerCase() !== 'admin') {
+        return (
+            <>
+                <header>
+                    <div>
+                        <Button
+                            description="retour"
+                            onClick={() =>
+                                navigate(currentUser.role.toLowerCase() === 'admin' ? '/dashboardAdmin' : '/dashboardFormateur')
+                            }
+                        />
+                    </div>
+                </header>
+                <main>
+                    <p>Vous n'êtes pas autorisé à créer une salle.</p>
+                </main>
+            </>
+        );
+    }
+
     return (
         <>
-        
             <header>
                 <div>
                 <Button description="retour" onClick={() => navigate('/DashboardAdmin')} />
@@ -105,7 +150,6 @@ function CreerSalle() {
                     </form>
                 </div>
             </main>
-            
         </>
     );
 }

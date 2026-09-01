@@ -1,3 +1,4 @@
+// src/pages/listeReservations.tsx
 // ---------- Imports --------
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
@@ -14,6 +15,7 @@ interface Reservation {
   heureDebut: string;
   heureFin: string;
   motif: string;
+  userId?: string;
 }
 
 interface Salle {
@@ -21,9 +23,20 @@ interface Salle {
   label: string;
 }
 
+interface CurrentUser {
+  id: string;
+  email: string;
+  role: string;
+}
+
 //--------- Component ---------
 function ListeReservations() {
   const navigate = useNavigate();
+
+  const currentUser: CurrentUser | null = JSON.parse(
+    localStorage.getItem('user') || 'null',
+  );
+
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [salles, setSalles] = useState<Salle[]>([]);
   const [erreur, setErreur] = useState('');
@@ -49,12 +62,22 @@ function ListeReservations() {
     return salle ? salle.label : salleId;
 }
 
-  async function annulerReservation(id: string) {
+  async function annulerReservation(reservation: Reservation) {
+    if (!currentUser) {
+      setErreur('Vous devez être connecté pour annuler une réservation.');
+      return;
+    }
+
+    if (reservation.userId !== currentUser.id && currentUser.role.toLowerCase() !== 'admin') {
+      setErreur("Vous n'êtes pas autorisé à annuler cette réservation.");
+      return;
+    }
+
     const confirme = window.confirm('Annuler cette réservation ?');
     if (!confirme) return;
 
     try {
-      const res = await fetch(`${API_URL}/reservations/${id}`, {
+      const res = await fetch(`${API_URL}/reservations/${reservation.id}`, {
         method: 'DELETE',
       });
 
@@ -62,17 +85,37 @@ function ListeReservations() {
         throw new Error('Erreur lors de la suppression');
       }
 
-      setReservations((prev) => prev.filter((r) => r.id !== id));
+      setReservations((prev) => prev.filter((r) => r.id !== reservation.id));
     } catch (err) {
       setErreur("La réservation n'a pas pu être annulée.");
     }
+  }
+
+  if (!currentUser) {
+    return (
+      <>
+        <header>
+          <div>
+            <Button description="retour" onClick={() => navigate('/')} />
+          </div>
+        </header>
+        <main>
+          <p>Vous devez être connecté pour consulter les réservations.</p>
+        </main>
+      </>
+    );
   }
 
   return (
     <>
       <header>
         <div>
-          <Button description="retour" onClick={() => navigate('/dashboardAdmin')} />
+          <Button
+            description="retour"
+            onClick={() =>
+              navigate(currentUser.role.toLowerCase() === 'admin' ? '/dashboardAdmin' : '/dashboardFormateur')
+            }
+          />
         </div>
       </header>
       <main>
@@ -94,7 +137,7 @@ function ListeReservations() {
                   </span>
                   <Button
                     description="annuler"
-                    onClick={() => annulerReservation(r.id)}
+                    onClick={() => annulerReservation(r)}
                   />
                 </li>
               ))}
