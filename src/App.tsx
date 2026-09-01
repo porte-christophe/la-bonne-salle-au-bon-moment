@@ -1,7 +1,6 @@
 // Imports
 import { BrowserRouter } from "react-router";
 import AppRoutes from "./AppRoutes";
-
 // Compoment
 function App() {
 
