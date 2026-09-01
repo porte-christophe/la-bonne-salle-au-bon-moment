@@ -56,7 +56,7 @@ function Agenda(){
       	.catch((err) => console.error('Erreur lors du chargement des réservations', err));
   	}, []);
 
-  	function reser(id:string){
+  	function setSchedule(id:string){
   		let eventsTemp = [];
   		reservations.forEach((res)=>{
   			if (res.salleId === id) {
@@ -64,18 +64,17 @@ function Agenda(){
   				eventsTemp.push({	title: res.motif,
   							start: res.date + "T" + res.heureDebut,
   							end: res.date + "T" + res.heureFin,
-  				})
-  				setEvents(eventsTemp);
-  				
+  				})  				
   			}
   		})
+  		setEvents(eventsTemp);
   	}
   	
 	
 	//---Render 
     return (
     	<>
-    		<select onChange={()=>reser(event.target.value)}>
+    		<select onChange={()=>setSchedule(event.target.value)}>
     			<option>--Veuillez choisir une salle--</option>
     			{salles.map((salle, index) => (
             		<option key = {index} value={salle.id}>{salle.label}</option>
