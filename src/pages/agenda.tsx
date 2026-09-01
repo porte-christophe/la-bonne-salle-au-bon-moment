@@ -1,4 +1,5 @@
 import Button from '../components/button';
+import { useEffect, useState } from 'react';
 
 import FullCalendar, { useCalendarController } from "@fullcalendar/react";
 import themePlugin from "@fullcalendar/react/themes/monarch"; // YOUR THEME
@@ -13,16 +14,38 @@ import '@fullcalendar/react/themes/monarch/palettes/blue.css'; // YOUR THEME'S P
 
 function Agenda(){
 	//---Logic
+	const API_URL = 'http://localhost:3001';
+
+	interface SalleData {
+	 	id: string;
+	  	label: string;
+	  	nom: string;
+	  	capacity: number;
+	  	site: string;
+	  	building: string;
+	  	floor: number;
+	  	material: string[];
+	}
 	//var
 	const controller = useCalendarController();
-	let reservation = [
+	const [salles, setSalles] = useState<SalleData[]>([]);
 
-	]
+   	useEffect(() => {
+    	fetch(`${API_URL}/salles`)
+      	.then((res) => res.json())
+      	.then((data) => setSalles(data))
+      	.catch((err) => console.error('Erreur lors du chargement des salles', err));
+  	}, []);
 
 	
 	//---Render 
     return (
     	<>
+    		<select>
+    			{salles.map((salle, index) => (
+            		<option key = {index} >{salle.label}</option>
+          		))}
+    		</select>
     		<div>
 		        <Button
 		        	description="Semaine précedente"
