@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { getSalles } from "../services/salle.service";
 import { useNavigate } from 'react-router';
 
-
 type Salle = {
   label: string;
   capacity: string;
@@ -14,9 +13,9 @@ type Salle = {
 };
 
 function DashboardFormateur() {
-    const [salles, setSalles] = useState<Salle[]>([]);
-    const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
+  const [salles, setSalles] = useState<Salle[]>([]);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function chargerSalles() {
@@ -29,7 +28,6 @@ function DashboardFormateur() {
         setLoading(false);
       }
     }
-
     chargerSalles();
   }, []);
 
@@ -38,55 +36,46 @@ function DashboardFormateur() {
   }
 
   return (
-    
-    
     <>
-   
-    <header>
-          <div>
-            <Button description='se deconnecter'/>
-          </div>
-    </header>
-    <div className="p-6">
+      <header>
+        <div>
+          <Button description='se deconnecter' />
+        </div>
+      </header>
 
-      <h1>
-        Dashboard Formateur
-      </h1>
-    
-     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="p-6">
+        <h1>
+          Dashboard Formateur
+        </h1>
 
-  {salles.map((salle) => (
-    <div
-      key={salle.label}
-      className="salle-card"
-    >
-
-      <h3 className="salle-title">
-        {salle.label}
-      </h3>
-
-      <p className="salle-info">
-        Numéro : <strong>{salle.floor}</strong>
-      </p>
-
-      <p className="salle-info">
-        Capacité : <strong>{salle.capacity} personnes</strong>
-      </p>
-
-    </div>
-  ))}
-
-</div>
-
-    </div>
-  <footer>
-            <div>
-                <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')}/>
-                <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')}/>
-                <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')}/>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {salles.map((salle) => (
+            <div
+              key={salle.label}
+              className="salle-card"
+            >
+              <h3 className="salle-title">
+                {salle.label}
+              </h3>
+              <p className="salle-info">
+                Numéro : <strong>{salle.floor}</strong>
+              </p>
+              <p className="salle-info">
+                Capacité : <strong>{salle.capacity} personnes</strong>
+              </p>
             </div>
-        </footer>
-</>
+          ))}
+        </div>
+      </div>
+
+      <footer>
+        <div>
+          <Button description='effectuer une reservation' onClick={() => navigate('/creerReservation')} />
+          <Button description='modifier une reservation' onClick={() => navigate('/modifierReservation')} />
+          <Button description='supprimer une reservation' onClick={() => navigate('/listeReservations')} />
+        </div>
+      </footer>
+    </>
   );
 }
 
