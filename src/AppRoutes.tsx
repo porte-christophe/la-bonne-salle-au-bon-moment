@@ -5,7 +5,7 @@ import DashboardAdmin from "./pages/dashboard-admin";
 import DashboardFormateur from "./pages/dashboard-formateur";
 import CreateUserForm from "./pages/createUser";
 import CreerSalle from "./pages/creerSalle";
-import CreerReservation from "./pages/CreerReservation";
+import CreerReservation from "./pages/creerReservation";
 
 //Composant
 function AppRoutes() {

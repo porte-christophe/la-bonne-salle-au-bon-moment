@@ -64,6 +64,7 @@ function CreerReservation() {
       });
 
       if (!res.ok) {
+        console.log(res.ok);
         throw new Error('Erreur lors de la création de la réservation');
       }
 
