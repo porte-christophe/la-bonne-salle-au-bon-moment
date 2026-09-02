@@ -60,7 +60,6 @@ function Agenda(){
   		let eventsTemp = [];
   		reservations.forEach((res)=>{
   			if (res.salleId === id) {
-  				console.log(res);
   				eventsTemp.push({	title: res.motif,
   							start: res.date + "T" + res.heureDebut,
   							end: res.date + "T" + res.heureFin,
