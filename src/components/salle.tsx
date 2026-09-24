@@ -1,25 +1,20 @@
-interface Salle {
-  id: number;
-  name: string;
-  capacity: number;
-}
+import { useNavigate } from 'react-router';
 
-function Salle({ salle }: Salle) {
+
+function Salle({salle, deleteOne}) {
+  const navigate = useNavigate();
+
   return (
-    <div
-              key={salle.id}
-              className="salle-card"
-            >
-              <h3 className="salle-title">
-                {salle.name}
-              </h3>
-              {/*<p className="salle-info">
-                Numéro : <strong>{salle.floor}</strong>
-              </p>*/}
-              <p className="salle-info">
-                Capacité : <strong>{salle.capacity} personnes</strong>
-              </p>
-            </div>
+    <div key={salle.id} className="salle-card">
+      <h3 className="salle-title">
+        {salle.name}
+      </h3>
+      <p className="salle-info">
+        Capacité : <strong>{salle.capacity} personnes</strong>
+      </p>
+      <button onClick={()=>navigate(`/updateSalle/${salle.id}`)} >Modifier</button>
+      <button onClick={()=>{deleteOne()}} >supprimer</button>
+    </div>
   );
 }
 

@@ -4,6 +4,7 @@ import Button from '../components/button';
 import Salle from '../components/salle';
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
+import { deleteSalle, getSalles } from '../services/salle.service';
 
 const API_URL = 'http://localhost:3000';
 
@@ -20,9 +21,9 @@ interface Salle {
 //--------- Component ---------
 function DashboardAdmin(){
   const navigate = useNavigate();
-   const [salles, setSalles] = useState<Salle[]>([]);
+  const [salles, setSalles] = useState<Salle[]>([]);
 
-   useEffect(() => {
+  useEffect(() => {
     fetch(`${API_URL}/salles`)
       .then((res) => res.json())
       .then((data) => setSalles(data))
@@ -39,7 +40,12 @@ function DashboardAdmin(){
         <main>
         <div className='grid'>
           {salles.map((salle) => (
-            <Salle salle={salle} />
+            <Salle salle={salle} 
+              deleteOne={()=>{
+                deleteSalle(salle);
+                setSalles(salles.filter(s => s.id !== salle.id));
+              }}
+            />
           ))}
         </div>
       </main>

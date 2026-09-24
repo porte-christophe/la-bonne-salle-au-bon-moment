@@ -13,11 +13,43 @@ const API_URL = "http://localhost:3000/salles";
 
 export async function getSalles() {
   const response = await fetch(API_URL);
-  console.log(response);
 
   if (!response.ok) {
     throw new Error("Impossible de récupérer les salles");
   }
 
   return response.json();
+}
+
+
+export async function deleteSalle(salle: object) {
+  const URL = "http://localhost:3000/salles/" + salle.id;
+  const response = await fetch(URL, {
+    method: "DELETE",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(salle),
+  });
+  return response.json();
+}
+
+
+
+export async function updateSalle(id:number) {
+  const URL = "http://localhost:3000/salles/" + id;
+  const response = await fetch(URL, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(salle),
+  });
+  return response.json();
+}
+
+export async function getSalle(id:number) {
+  const URL = "http://localhost:3000/salles/" + id;
+  const response = await fetch(URL);
+
+  if (!response.ok) {
+    throw new Error("Impossible de récupérer la salle");
+  }
+  return await response.json();
 }
