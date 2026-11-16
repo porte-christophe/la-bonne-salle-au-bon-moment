@@ -1,7 +1,7 @@
 // Imports
 import { BrowserRouter } from "react-router";
 import AppRoutes from "./AppRoutes";
-// Compoment
+// Compomentnnnnnnnn
 function App() {
 
   return (
