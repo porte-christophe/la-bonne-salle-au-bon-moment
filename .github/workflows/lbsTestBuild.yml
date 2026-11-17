@@ -1,0 +1,34 @@
+name: lbsTestBuild
+run-name: LBSTestBuild
+on: [push]
+jobs:
+  LBSTestBuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24.x'
+          cache: 'npm'
+      - name: install dependencies
+        run: npm ci
+        
+      - name: run linter
+        run: npm run lint
+
+      - name: run test
+        run: npm test
+      
+      - name: run build
+        run: npm run build
+
+  Artefacts:
+    needs: LBSTestBuild
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v6
+        with:
+          name: build-artifacts
+          path: build/

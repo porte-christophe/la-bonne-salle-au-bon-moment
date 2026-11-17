@@ -1,0 +1,59 @@
+.grid{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 8px;
+    min-height: 80vh;
+    padding: 5px 0;
+}
+h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 45px ;
+    color:blue;
+    text-decoration: underline;
+}
+.salle-card {
+  /* Fond de la carte */
+  background-color: #ffffff;
+
+  /* Bordure autour de la carte */
+  border: 2px solid #d1d5db;
+
+  /* Coins arrondis */
+  border-radius: 12px;
+
+  /* Espace intérieur */
+  padding: 20px;
+
+  /* Ombre */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  /* Animation */
+  transition: 0.3s;
+}
+
+/* Quand la souris passe sur la carte */
+.salle-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Titre de la salle */
+.salle-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #1f2937;
+}
+
+/* Informations de la salle */
+.salle-info {
+  margin-bottom: 8px;
+  color: #4b5563;
+}
+
+/* Texte en gras */
+.salle-info strong {
+  color: #111827;
+}
